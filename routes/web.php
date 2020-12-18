@@ -3,16 +3,14 @@
 use App\Http\Controllers\PlanController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn() => view('welcome'));
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', fn() => view('dashboard'))
+    ->middleware(['auth'])
+    ->name('dashboard');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('plans/create', [PlanController::class, 'create'])->name('plans.create');
-});
+Route::middleware(['auth'])->group(
+    fn() => Route::resource('plans', PlanController::class)
+);
 
 require __DIR__.'/auth.php';
