@@ -16,7 +16,7 @@ class CreatePlansTable extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->enum('type', ['niños', 'adolescentes', 'adultos', 'avanzado'])->default('niños');
+            $table->enum('type', ['niños', 'adolescentes', 'adultos', 'avanzado']);
             $table->text('description');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();

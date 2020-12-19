@@ -16,7 +16,7 @@ class CreatePlanTest extends TestCase
     {
         parent::setUp();
 
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
 
         $this->user = User::factory()->create();
 
@@ -47,6 +47,74 @@ class CreatePlanTest extends TestCase
             'type' => 'avanzado',
             'description' => '::description::',
             'user_id' => $this->user->id,
+        ]);
+    }
+
+    /** @test */
+    public function a_plan_cannot_be_stored_with_empty_field_title(): void
+    {
+        $response = $this->post(route('plans.store', [
+            'title' => '',
+            'type' => 'avanzado',
+            'description' => '::description::',
+            'user_id' => $this->user->id,
+        ]))
+        ->assertSessionHasErrors();
+
+        $this->assertDatabaseMissing('plans', [
+            'type' => 'avanzado',
+            'description' => '::description::',
+        ]);
+    }
+
+    /** @test */
+    public function a_plan_cannot_be_stored_with_empty_field_type(): void
+    {
+        $response = $this->post(route('plans.store', [
+            'title' => '::title::',
+            'type' => '',
+            'description' => '::description::',
+            'user_id' => $this->user->id,
+        ]))
+        ->assertSessionHasErrors();
+
+        $this->assertDatabaseMissing('plans', [
+            'title' => '::title::',
+            'description' => '::description::',
+        ]);
+    }
+
+    /** @test */
+    public function a_plan_cannot_be_stored_with_wrong_field_type(): void
+    {
+        $response = $this->post(route('plans.store', [
+            'title' => '::title::',
+            'type' => 'wrong-type',
+            'description' => '::description::',
+            'user_id' => $this->user->id,
+        ]))
+        ->assertSessionHasErrors();
+
+        $this->assertDatabaseMissing('plans', [
+            'title' => '::title::',
+            'description' => '::description::',
+        ]);
+    }
+
+    /** @test */
+    public function a_plan_cannot_be_stored_with_empty_field_description(): void
+    {
+        $response = $this->post(route('plans.store', [
+            'title' => '::title::',
+            'type' => 'avanzado',
+            'description' => '',
+            'user_id' => $this->user->id,
+        ]))
+        ->assertSessionHasErrors();
+
+        $this->assertDatabaseMissing('plans', [
+            'title' => '::title::',
+            'type' => 'avanzado',
         ]);
     }
 }
