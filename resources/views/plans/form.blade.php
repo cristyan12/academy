@@ -15,7 +15,7 @@ $types = [
             <div class="col-span-6 sm:col-span-4">
                 <x-label for="title">Título del plan</x-label>
 
-                <x-input id="title" type="text" name="title" required autofocus />
+                <x-input id="title" type="text" name="title" :value="old('title', $plan->title)" required autofocus />
             </div>
 
             <!-- Type -->
