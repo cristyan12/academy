@@ -36,6 +36,7 @@ class CreatePlanTest extends TestCase
     {
         $response = $this->post(route('plans.store', [
             'title' => '::title::',
+            'type' => 'avanzado',
             'description' => '::description::',
             'user_id' => $this->user->id,
         ]))
@@ -43,6 +44,7 @@ class CreatePlanTest extends TestCase
 
         $this->assertDatabaseHas('plans', [
             'title' => '::title::',
+            'type' => 'avanzado',
             'description' => '::description::',
             'user_id' => $this->user->id,
         ]);

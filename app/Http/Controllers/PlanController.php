@@ -9,11 +9,14 @@ use Illuminate\View\View;
 
 class PlanController extends Controller
 {
+    public function index()
+    {
+        return Plan::all();
+    }
+
     public function create(): View
     {
-        $options = ['Mexico', 'USA', 'Canada'];
-
-        return view('plans.create', compact('options'));
+        return view('plans.create', ['plan' => new Plan]);
     }
 
     public function store(Request $request): RedirectResponse
