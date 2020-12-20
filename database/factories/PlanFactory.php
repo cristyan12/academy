@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Plan;
+use App\Models\{Plan, User};
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PlanFactory extends Factory
@@ -22,7 +22,10 @@ class PlanFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->word,
+            'type' => $this->faker->randomElement(['niños', 'adolescentes', 'adultos', 'avanzado']),
+            'description' => $this->faker->paragraph,
+            'user_id' => User::factory(),
         ];
     }
 }

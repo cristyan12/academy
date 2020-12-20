@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('plans.create')" :active="request()->routeIs('plans.create')">
+                    <x-nav-link :href="route('plans.index')" :active="request()->routeIs('plans.index')">
                         Planes
                     </x-nav-link>
                 </div>
