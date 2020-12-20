@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Plan::factory()->count(10)->create();
+        User::factory()
+            ->has(Plan::factory()->count(50))
+            ->create([
+                'name' => 'Cristyan Valera',
+                'email' => 'correo@example.com',
+            ]);
     }
 }

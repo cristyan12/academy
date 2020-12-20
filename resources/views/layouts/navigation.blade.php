@@ -75,7 +75,7 @@
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('plans.create')" :active="request()->routeIs('plans.create')">
+            <x-responsive-nav-link :href="route('plans.index')" :active="request()->routeIs('plans.index')">
                 Planes
             </x-responsive-nav-link>
         </div>
