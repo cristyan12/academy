@@ -62,10 +62,6 @@
                                 {{ $plan->user->name }}
                             </dd>
                         </div>
-                        {{-- <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            Botones
-                        </div> --}}
-
                         <div class="bg-white px-4 py-3 text-right sm:px-6">
                             <x-button>Editar</x-button>
                             <x-owns.link href="{{ route('plans.index') }}">Ir al listado</x-owns.link>
