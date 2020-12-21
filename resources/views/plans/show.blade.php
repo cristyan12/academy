@@ -63,7 +63,7 @@
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-3 text-right sm:px-6">
-                            <x-button>Editar</x-button>
+                            <x-owns.link href="{{ route('plans.edit', $plan) }}">Editar</x-owns.link>
                             <x-owns.link href="{{ route('plans.index') }}">Ir al listado</x-owns.link>
                         </div>
                     </dl>

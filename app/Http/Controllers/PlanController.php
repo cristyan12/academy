@@ -14,7 +14,7 @@ class PlanController extends Controller
         $plans = Plan::query()
             ->select('id', 'title', 'type', 'updated_at')
             ->orderBy('id')
-            ->paginate();
+            ->paginate(5);
 
         return view('plans.index', compact('plans'));
     }
