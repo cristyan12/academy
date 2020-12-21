@@ -41,4 +41,16 @@ class PlanController extends Controller
     {
         return view('plans.show', compact('plan'));
     }
+
+    public function edit(Plan $plan): View
+    {
+        return view('plans.edit', compact('plan'));
+    }
+
+    public function update(Request $request, Plan $plan): RedirectResponse
+    {
+        $plan->update($request->all());
+
+        return redirect()->route('plans.index');
+    }
 }

@@ -39,8 +39,7 @@ class CreatePlanTest extends TestCase
             'type' => 'avanzado',
             'description' => '::description::',
             'user_id' => $this->user->id,
-        ]))
-        ->assertRedirect(route('plans.index'));
+        ]));
 
         $this->assertDatabaseHas('plans', [
             'title' => '::title::',
