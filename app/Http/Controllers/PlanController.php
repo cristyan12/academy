@@ -34,6 +34,11 @@ class PlanController extends Controller
 
         auth()->user()->plans()->save($plan);
 
-        return redirect()->route('plans.index');
+        return redirect()->route('plans.show', $plan);
+    }
+
+    public function show(Plan $plan): View
+    {
+        return view('plans.show', compact('plan'));
     }
 }
