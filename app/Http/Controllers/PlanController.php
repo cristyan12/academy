@@ -53,4 +53,11 @@ class PlanController extends Controller
 
         return redirect()->route('plans.index');
     }
+
+    public function destroy(Plan $plan): RedirectResponse
+    {
+        $plan->delete();
+
+        return redirect()->route('plans.index');
+    }
 }
