@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PlanController;
+use App\Http\Livewire\Plans\ListPlans;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => view('welcome'));

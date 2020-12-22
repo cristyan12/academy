@@ -16,7 +16,7 @@ class ListPlansTest extends TestCase
     {
         parent::setUp();
 
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
 
         $this->user = User::factory()->create();
 
