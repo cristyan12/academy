@@ -15,7 +15,7 @@
           <span class="font-medium">{{ $paginator->firstItem() }}</span>
           -
           <span class="font-medium">{{ $paginator->lastItem() }}</span>
-          de un total de
+            <span>de un total de</span>
           <span class="font-medium">{{ $paginator->total() }}</span>
           resultados
         </p>
