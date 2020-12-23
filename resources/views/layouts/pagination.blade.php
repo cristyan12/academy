@@ -1,11 +1,11 @@
 @if ($paginator->hasPages())
-  <div class="bg-gray-50 px-4 py-3 flex items-center justify-between sm:px-6">
-    <div class="flex-1 flex justify-between sm:hidden">
+  <div class="bg-gray-50 px-4 py-3 flex items-center justify-items-stretch sm:px-6">
+    <div class="flex-1 flex justify-items-stretch sm:hidden">
       <button wire:click="previousPage" wire:loading.attr="disabled" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-        Previous
+        Previo
       </button>
       <button wire:click="nextPage" wire:loading.attr="disabled" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-        Next
+        Siguiente
       </button>
     </div>
     <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
@@ -13,9 +13,9 @@
         <p class="text-sm leading-5 text-gray-700">
           Mostrando
           <span class="font-medium">{{ $paginator->firstItem() }}</span>
-          a
+          -
           <span class="font-medium">{{ $paginator->lastItem() }}</span>
-          de
+          de un total de
           <span class="font-medium">{{ $paginator->total() }}</span>
           resultados
         </p>
