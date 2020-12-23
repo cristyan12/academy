@@ -12,7 +12,7 @@
     <div class="py-8">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                @include('plans._rows')
+                <livewire:plans-table />
             </div>
         </div>
     </div>

@@ -14,4 +14,10 @@ Route::middleware(['auth'])->group(
     fn() => Route::resource('plans', PlanController::class)
 );
 
+Route::middleware(['auth'])->group(function () {
+    Route::view('plans', 'plans.index')->name('plans.index');
+
+    Route::resource('plans', PlanController::class)->except('index');
+});
+
 require __DIR__.'/auth.php';

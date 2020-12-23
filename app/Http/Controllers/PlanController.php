@@ -9,16 +9,6 @@ use Illuminate\View\View;
 
 class PlanController extends Controller
 {
-    public function index(): View
-    {
-        $plans = Plan::query()
-            ->select('id', 'title', 'type', 'updated_at')
-            ->orderBy('id')
-            ->paginate(5);
-
-        return view('plans.index', compact('plans'));
-    }
-
     public function create(): View
     {
         return view('plans.create', ['plan' => new Plan]);
