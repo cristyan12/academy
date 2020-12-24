@@ -36,7 +36,9 @@
                                 </td>
                                 <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
                                     <div class="text-sm font-medium text-gray-900">
-                                        {{ Str::limit($plan->title, 40) }}
+                                        <a href="{{ route('plans.show', $plan) }}" class="font-medium hover:text-indigo-500">
+                                            {{ Str::limit($plan->title, 40) }}
+                                        </a>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
@@ -85,6 +87,8 @@
         </div>
     </div>
     @else
-        <p class="text-xl">No hay planes registrados aún.</p>
+        <p class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8 text-xl">
+            No hay planes registrados aún.
+        </p>
     @endif
 </div>

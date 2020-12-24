@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory()
-            ->has(Plan::factory()->count(50))
+            ->has(Plan::factory()->count(100))
             ->create([
                 'name' => 'Cristyan Valera',
                 'email' => 'correo@example.com',

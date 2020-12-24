@@ -10,10 +10,6 @@ Route::get('/dashboard', fn() => view('dashboard'))
     ->middleware(['auth'])
     ->name('dashboard');
 
-Route::middleware(['auth'])->group(
-    fn() => Route::resource('plans', PlanController::class)
-);
-
 Route::middleware(['auth'])->group(function () {
     Route::view('plans', 'plans.index')->name('plans.index');
 
