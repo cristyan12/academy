@@ -21,7 +21,7 @@
                 <x-label for="description">Descripción</x-label>
 
                 <div class="">
-                    <x-owns.textarea name="description" :oldData="old('description', $plan->description)"/>
+                    <x-owns.textarea name="description">{{ old('description', $plan->description) }}</x-owns.textarea>
 
                     <p class="mt-2 text-sm text-gray-500">
                         Breve descripción acerca del plan

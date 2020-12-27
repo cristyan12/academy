@@ -22,13 +22,15 @@
                             <!-- Validation Errors -->
                             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+                            <livewire:plan-form></livewire:plan-form>
+
                             <!-- Form -->
-                            <form action="{{ route('plans.update', $plan) }}" method="POST">
+                            {{-- <form action="{{ route('plans.update', $plan) }}" method="POST">
                                 @csrf
                                 @method('PUT')
 
                                 @include('plans.form')
-                            </form>
+                            </form> --}}
                         </div>
                     </div>
                 </div>

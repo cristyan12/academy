@@ -20,14 +20,9 @@
                         </div>
                         <div class="mt-5 md:mt-0 md:col-span-2">
                             <!-- Validation Errors -->
-                            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                            {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
 
-                            <!-- Form -->
-                            <form action="{{ route('plans.store') }}" method="POST">
-                                @csrf
-
-                                @include('plans.form')
-                            </form>
+                            <livewire:plan-form></livewire:plan-form>
                         </div>
                     </div>
                 </div>

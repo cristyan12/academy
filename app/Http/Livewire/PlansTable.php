@@ -11,8 +11,8 @@ class PlansTable extends Component
     use WithPagination;
 
     public string $search = '';
-    public string $orderBy = 'id';
-    public string $column = 'asc';
+    public string $orderBy = 'updated_at';
+    public string $column = 'desc';
     public int $perPage = 10;
 
     public function render(): View
