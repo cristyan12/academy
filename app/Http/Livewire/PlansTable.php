@@ -10,18 +10,38 @@ class PlansTable extends Component
 {
     use WithPagination;
 
+    public string $search = '';
+    public string $orderBy = 'id';
+    public string $column = 'asc';
+    public int $perPage = 10;
+
+    public function render(): View
+    {
+        $plans = Plan::search($this->search)
+            ->select('id', 'title', 'type', 'updated_at')
+            ->orderBy($this->orderBy, $this->column)
+            ->paginate($this->perPage);
+
+        return view('livewire.plans-table', compact('plans'));
+    }
+
     public function paginationView(): string
     {
         return 'layouts.pagination';
     }
 
-    public function render(): View
+    public function updatingSearch(): void
     {
-        $plans = Plan::query()
-            ->select('id', 'title', 'type', 'updated_at')
-            ->orderBy('id')
-            ->paginate(5);
+        $this->resetPage();
+    }
 
-        return view('livewire.plans-table', compact('plans'));
+    public function resetFilters(): void
+    {
+        $this->reset(['search', 'orderBy', 'column', 'perPage']);
+    }
+
+    public function destroy(int $plan): void
+    {
+        Plan::destroy($plan);
     }
 }

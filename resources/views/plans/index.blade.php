@@ -11,7 +11,7 @@
 
     <div class="py-8">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <livewire:plans-table />
             </div>
         </div>

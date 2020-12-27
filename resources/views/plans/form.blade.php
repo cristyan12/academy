@@ -1,12 +1,3 @@
-@php
-$types = [
-    'niños',
-    'adolescentes',
-    'adultos',
-    'avanzado',
-];
-@endphp
-
 <div class="shadow overflow-hidden sm:rounded-md">
     <div class="px-4 py-5 bg-white sm:p-6">
         <div class="grid grid-cols-6 gap-6">
@@ -22,7 +13,7 @@ $types = [
             <div class="col-span-6 sm:col-span-4">
                 <x-label for="type">Tipo</x-label>
 
-                <x-owns.select name="type" :options="$types" :relatedData="$plan->type"/>
+                <x-owns.select name="type" :options="trans('plans.types')" :relatedData="$plan->type"/>
             </div>
 
             <!-- Description -->
@@ -42,5 +33,6 @@ $types = [
 
     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
         <x-button>Guardar</x-button>
+        <x-owns.link href="{{ url()->previous() }}">Cancelar</x-owns.link>
     </div>
 </div>
