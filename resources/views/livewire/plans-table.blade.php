@@ -6,7 +6,7 @@
                 id="search"
                 type="text"
                 name="search"
-                placeholder="Search by ID, title and type" />
+                placeholder="Search by ID, title, description and type" />
         </div>
         <div class="w-1/6 relative mx-1">
             <x-select wire:model.debounce.300ms="orderBy">
@@ -24,6 +24,7 @@
         </div>
         <div class="w-1/6 relative mx-1">
             <x-select wire:model="perPage">
+                <option>5</option>
                 <option>10</option>
                 <option>25</option>
                 <option>50</option>

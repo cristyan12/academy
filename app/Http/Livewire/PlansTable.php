@@ -13,7 +13,7 @@ class PlansTable extends Component
     public string $search = '';
     public string $orderBy = 'updated_at';
     public string $column = 'desc';
-    public int $perPage = 10;
+    public int $perPage = 5;
 
     public function render(): View
     {
