@@ -15,6 +15,19 @@ class PlansTable extends Component
     public string $column = 'desc';
     public int $perPage = 5;
 
+    /** @var string[] */
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'orderBy' => ['except' => 'updated_at'],
+        'column' => ['except' => 'desc'],
+        'perPage' => ['except' => 5],
+    ];
+
+    public function mount(): void
+    {
+        $this->fill(request()->only('search', 'orderBy', 'column', 'perPage'));
+    }
+
     public function render(): View
     {
         $plans = Plan::search($this->search)
