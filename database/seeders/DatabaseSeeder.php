@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\{Plan, User};
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()
-            ->has(Plan::factory()->count(100))
-            ->create([
-                'name' => 'Cristyan Valera',
-                'email' => 'correo@example.com',
-            ]);
+        $user = User::factory()->create([
+            'name' => 'Cristyan Valera',
+            'email' => 'correo@example.com',
+        ]);
+
+        $this->call(PlanSeeder::class);
     }
 }
