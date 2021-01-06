@@ -16,6 +16,11 @@ class CreateUserProfilesTable extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('plan_id')->constrained();
+            $table->date('date_of_birth');
+            $table->string('phone');
+            $table->date('last_access');
+            $table->string('country');
             $table->timestamps();
         });
     }
