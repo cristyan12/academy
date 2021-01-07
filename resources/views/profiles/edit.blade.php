@@ -1,1 +1,1 @@
-edit.blade.php
+{{ $user->name }}

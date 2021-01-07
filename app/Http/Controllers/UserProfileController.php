@@ -16,9 +16,9 @@ class UserProfileController extends Controller
         ]);
     }
 
-    public function create(User $user): void
+    public function create(User $user): View
     {
-        $this->formView('profiles.create', $user);
+        return $this->viewForm('profiles.create', $user);
     }
 
     public function store(Request $request): RedirectResponse
@@ -36,9 +36,9 @@ class UserProfileController extends Controller
         return back();
     }
 
-    public function edit(): void
+    public function edit(): View
     {
-        $this->formView('profiles.edit', auth()->user());
+        return $this->viewForm('profiles.edit', auth()->user());
     }
 
     public function update(Request $request)
@@ -61,7 +61,7 @@ class UserProfileController extends Controller
         return back();
     }
 
-    protected function formView(string $view, User $user): View
+    protected function viewForm(string $view, User $user): View
     {
         return view($view, [
             'user' => $user,

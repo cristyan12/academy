@@ -12,8 +12,6 @@ class UserProfileTest extends TestCase
 
     public function test_a_user_can_save_its_profile(): void
     {
-        $this->withoutExceptionHandling();
-
         $plan = Plan::factory()->create();
 
         $this->actingAs($user = User::factory()->create());
@@ -40,10 +38,23 @@ class UserProfileTest extends TestCase
         ]);
     }
 
-    public function test_a_user_can_edit_its_profile(): void
+    public function test_edit_profile_view_can_be_rendered(): void
     {
         $this->withoutExceptionHandling();
 
+        $user = User::factory()->create(['name' => '::name::']);
+
+        $this->actingAs($user);
+
+        $response = $this->get('/edit-profile/')
+            ->assertStatus(200)
+            ->assertViewIs('profiles.edit')
+            ->assertViewHas('user')
+            ->assertSee('::name::');
+    }
+
+    public function test_a_user_can_edit_its_profile(): void
+    {
         $plan = Plan::factory()->create();
         $user = User::factory()->create();
         $user->profile()->save(UserProfile::factory()->make());
