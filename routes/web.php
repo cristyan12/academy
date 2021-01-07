@@ -14,10 +14,9 @@ Route::middleware(['auth'])->group(function () {
     Route::view('plans', 'plans.index')->name('plans.index');
     Route::resource('plans', PlanController::class)->except('index');
 
-    Route::get('users/{user}/profiles', [UserProfileController::class, 'index'])->name('profiles.index');
-    Route::get('users/{user}/profiles/create', [UserProfileController::class, 'create'])->name('profiles.create');
-    Route::get('users/{user}/profiles/edit', [UserProfileController::class, 'edit'])->name('profiles.edit');
-    Route::put('profiles/{user}', [UserProfileController::class, 'update'])->name('profiles.update');
+    Route::post('/store-profile/', [UserProfileController::class, 'store'])->name('profiles.store');
+    Route::get('/edit-profile/', [UserProfileController::class, 'edit'])->name('profiles.edit');
+    Route::put('/update-profile/', [UserProfileController::class, 'update'])->name('profiles.update');
 });
 
 require __DIR__.'/auth.php';

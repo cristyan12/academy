@@ -21,20 +21,44 @@ class UserProfileController extends Controller
         $this->formView('profiles.create', $user);
     }
 
-    public function edit(User $user): void
+    public function store(Request $request): RedirectResponse
     {
-        $this->formView('profiles.edit', $user);
+        $profile = new UserProfile([
+            'date_of_birth' => $request->date_of_birth,
+            'phone' => $request->phone,
+            'last_access' => $request->last_access,
+            'country' => $request->country,
+            'plan_id' => $request->plan_id,
+        ]);
+
+        auth()->user()->profile()->save($profile);
+
+        return back();
     }
 
-    public function update(Request $request, User $user): RedirectResponse
+    public function edit(): void
     {
-        $user->update($request->only('name', 'email'));
+        $this->formView('profiles.edit', auth()->user());
+    }
 
-        auth()->user()->profile()->save(new UserProfile($request->only(
-            'date_of_birth', 'phone', 'last_access', 'country', 'plan_id'
-        )));
+    public function update(Request $request)
+    {
+        $user = $request->user();
 
-        return redirect()->route('profiles.index', $user);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        $user->profile()->update([
+            'date_of_birth' => $request->date_of_birth,
+            'phone' => $request->phone,
+            'last_access' => $request->last_access,
+            'country' => $request->country,
+            'plan_id' => $request->plan_id,
+        ]);
+
+        return back();
     }
 
     protected function formView(string $view, User $user): View
