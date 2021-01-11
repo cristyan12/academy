@@ -42,13 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function plans(): HasMany
-    {
-        return $this->hasMany(Plan::class);
-    }
-
     public function profile(): HasOne
     {
         return $this->hasOne(UserProfile::class)->withDefault();
+    }
+
+    public function login(): HasMany
+    {
+        return $this->hasMany(Login::class);
     }
 }

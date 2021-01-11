@@ -38,14 +38,12 @@ class CreatePlanTest extends TestCase
             'title' => '::title::',
             'type' => 'avanzado',
             'description' => '::description::',
-            'user_id' => $this->user->id,
         ]));
 
         $this->assertDatabaseHas('plans', [
             'title' => '::title::',
             'type' => 'avanzado',
             'description' => '::description::',
-            'user_id' => $this->user->id,
         ]);
     }
 
@@ -56,7 +54,7 @@ class CreatePlanTest extends TestCase
             'title' => '',
             'type' => 'avanzado',
             'description' => '::description::',
-            'user_id' => $this->user->id,
+
         ]))
         ->assertSessionHasErrors();
 
@@ -73,7 +71,6 @@ class CreatePlanTest extends TestCase
             'title' => '::title::',
             'type' => '',
             'description' => '::description::',
-            'user_id' => $this->user->id,
         ]))
         ->assertSessionHasErrors();
 
@@ -90,7 +87,6 @@ class CreatePlanTest extends TestCase
             'title' => '::title::',
             'type' => 'wrong-type',
             'description' => '::description::',
-            'user_id' => $this->user->id,
         ]))
         ->assertSessionHasErrors();
 
@@ -107,7 +103,6 @@ class CreatePlanTest extends TestCase
             'title' => '::title::',
             'type' => 'avanzado',
             'description' => '',
-            'user_id' => $this->user->id,
         ]))
         ->assertSessionHasErrors();
 

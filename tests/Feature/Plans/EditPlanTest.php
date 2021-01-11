@@ -21,7 +21,7 @@ class EditPlanTest extends TestCase
 
         $this->user = User::factory()->create();
 
-        $this->user->plans()->save($this->plan = Plan::factory()->make());
+        $this->plan = Plan::factory()->create();
 
         $this->actingAs($this->user);
     }

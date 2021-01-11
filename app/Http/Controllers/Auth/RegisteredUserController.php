@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect('/edit-profile');
+        return redirect('/user/profile/create/');
         // return redirect(RouteServiceProvider::HOME);
     }
 }

@@ -30,6 +30,6 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect('/edit-profile');
+        $response->assertRedirect(route('profile.create'));
     }
 }

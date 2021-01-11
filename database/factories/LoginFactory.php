@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Plan;
+use App\Models\{Login, User};
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PlanFactory extends Factory
+class LoginFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Plan::class;
+    protected $model = Login::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,7 @@ class PlanFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence,
-            'type' => $this->faker->randomElement(['niños', 'adolescentes', 'adultos', 'avanzado']),
-            'description' => $this->faker->paragraph,
+            'created_at' => $faker->dateTimeThisDecade('now'),
         ];
     }
 }

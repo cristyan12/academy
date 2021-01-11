@@ -17,11 +17,12 @@ class ShowPlanTest extends TestCase
         $this->withoutExceptionHandling();
 
         $user = User::factory()->create();
-        $user->plans()->save($plan = Plan::factory()->make([
+
+        $plan = Plan::factory()->create([
             'title' => '::title::',
             'type' => 'adultos',
             'description' => '::description::',
-        ]));
+        ]);
 
         $response = $this->actingAs($user)->get(route('plans.show', $plan))
             ->assertStatus(200)
@@ -32,7 +33,6 @@ class ShowPlanTest extends TestCase
                 Str::title($plan->type),
                 $plan->updated_at->diffForHumans(),
                 $plan->description,
-                $plan->user->name,
             ]);
     }
 }

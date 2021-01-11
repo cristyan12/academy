@@ -1,0 +1,17 @@
+users
+    id - integer
+
+logins
+    id - integer
+    user_id - integer -> BelongsTo(User::class)
+    created_at - datetime
+
+plans
+    id - integer
+
+Un Plan de estudios tiene muchos usuarios inscritos
+
+user_profiles
+    id - integer
+    user_id - integer -> BelongsTo(User::class)
+    plan_id - integer -> BelongsTo(Plan::class)

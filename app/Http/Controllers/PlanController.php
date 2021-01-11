@@ -16,13 +16,11 @@ class PlanController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $plan = new Plan($request->validate([
+        $plan = Plan::create($request->validate([
             'title' => 'required|string|max:55',
             'type' => 'required|in:niños,adolescentes,adultos,avanzado',
             'description' => 'required|string|max:255',
         ]));
-
-        auth()->user()->plans()->save($plan);
 
         return redirect()->route('plans.show', $plan);
     }
