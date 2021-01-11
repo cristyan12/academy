@@ -64,6 +64,23 @@ class UserProfileTest extends TestCase
         $this->assertCount(0, UserProfile::all());
     }
 
+    public function test_phone_field_mut_contain_max_16_characters(): void
+    {
+        $plan = Plan::factory()->create();
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->post('/user/profile/', [
+            'phone' => 'muchos-caracteres-para-un-numero-de-telefono',
+            'born_at' => '2009-11-24 10:22:01',
+            'country' => '::country::',
+            'plan_id' => $plan->id,
+            'user_id' => $user->id,
+        ]);
+
+        $response->assertSessionHasErrors();
+        $this->assertCount(0, UserProfile::all());
+    }
+
     public function test_born_at_field_is_required(): void
     {
         $plan = Plan::factory()->create();
@@ -107,6 +124,23 @@ class UserProfileTest extends TestCase
             'phone' => '::phone::',
             'born_at' => '2009-11-24 10:22:01',
             'country' => '',
+            'plan_id' => $plan->id,
+            'user_id' => $user->id,
+        ]);
+
+        $response->assertSessionHasErrors();
+        $this->assertCount(0, UserProfile::all());
+    }
+
+    public function test_country_field_must_contain_max_100_characters(): void
+    {
+        $plan = Plan::factory()->create();
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->post('/user/profile/', [
+            'phone' => '::phone::',
+            'born_at' => '2009-11-24 10:22:01',
+            'country' => 'muchos-caracteres-para-el-nombre-de-un-pais-cualquiera-aun-en-español-que-es-mas-largo-que-el-ingles-por-ejemplo',
             'plan_id' => $plan->id,
             'user_id' => $user->id,
         ]);
