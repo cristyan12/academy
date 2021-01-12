@@ -9,7 +9,7 @@
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    Bienvenido, {{ Auth::user()->name }}.
+                    Bienvenido, {{ Auth::user()->name }} | {{ now()->format('M-Y') }}
                 </div>
             </div>
         </div>

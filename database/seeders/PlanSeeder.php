@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Plan;
 use Illuminate\Database\Seeder;
 
 class PlanSeeder extends Seeder
@@ -14,11 +14,9 @@ class PlanSeeder extends Seeder
      */
     public function run()
     {
-        return tap(User::first(), fn($user) => $user->plans()->createMany([
-            ['title' => 'Plan estudio niños', 'type' => 'niños', 'description' => 'Plan estudio para niños'],
-            ['title' => 'Plan estudio adolescentes', 'type' => 'adolescentes', 'description' => 'Plan estudio para adolescentes'],
-            ['title' => 'Plan estudio adultos', 'type' => 'adultos', 'description' => 'Plan estudio para adultos'],
-            ['title' => 'Plan estudio avanzado', 'type' => 'avanzado', 'description' => 'Plan estudio para avanzado'],
-        ]));
+        Plan::create(['title' => 'Plan estudio niños', 'type' => 'niños', 'description' => 'Plan estudio para niños']);
+        Plan::create(['title' => 'Plan estudio adolescentes', 'type' => 'adolescentes', 'description' => 'Plan estudio para adolescentes']);
+        Plan::create(['title' => 'Plan estudio adultos', 'type' => 'adultos', 'description' => 'Plan estudio para adultos']);
+        Plan::create(['title' => 'Plan estudio avanzado', 'type' => 'avanzado', 'description' => 'Plan estudio para avanzado']);
     }
 }

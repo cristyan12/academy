@@ -31,7 +31,7 @@ class PlanForm extends Component
     {
         $this->validate();
 
-        auth()->user()->plans()->save($this->plan);
+        $this->plan->save();
 
         return redirect()->to(route('plans.index'));
     }

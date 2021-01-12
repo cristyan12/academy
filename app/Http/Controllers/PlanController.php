@@ -14,17 +14,6 @@ class PlanController extends Controller
         return view('plans.create', ['plan' => new Plan]);
     }
 
-    public function store(Request $request): RedirectResponse
-    {
-        $plan = Plan::create($request->validate([
-            'title' => 'required|string|max:55',
-            'type' => 'required|in:niños,adolescentes,adultos,avanzado',
-            'description' => 'required|string|max:255',
-        ]));
-
-        return redirect()->route('plans.show', $plan);
-    }
-
     public function show(Plan $plan): View
     {
         return view('plans.show', compact('plan'));
