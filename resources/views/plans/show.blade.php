@@ -54,7 +54,7 @@
                                 {{ $plan->description }}
                             </dd>
                         </div>
-                        <div class="bg-white px-4 py-3 text-right sm:px-6">
+                        <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
                             <x-owns.link href="{{ route('plans.edit', $plan) }}">Editar</x-owns.link>
                             <x-owns.link href="{{ route('plans.index') }}">Ir al listado</x-owns.link>
                         </div>

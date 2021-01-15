@@ -13,7 +13,13 @@
             <div class="col-span-6 sm:col-span-4">
                 <x-label for="type">Tipo</x-label>
 
-                <x-owns.select name="type" :options="trans('plans.types')" :relatedData="$plan->type"/>
+                <x-select name="type" id="type">
+                    <option>---</option>
+                    <option value="niños"{{ old('type', $plan->type) === 'niños' ? ' selected' : '' }}>Niños</option>
+                    <option value="adolescentes"{{ old('type', $plan->type) === 'adolescentes' ? ' selected' : '' }}>Adolescentes</option>
+                    <option value="adultos"{{ old('type', $plan->type) === 'adultos' ? ' selected' : '' }}>Adultos</option>
+                    <option value="avanzado"{{ old('type', $plan->type) === 'avanzado' ? ' selected' : '' }}>Avanzado</option>
+                </x-select>
             </div>
 
             <!-- Description -->

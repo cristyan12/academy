@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserProfile;
+use App\Models\{Plan, UserProfile};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -13,6 +13,7 @@ class UserProfileController extends Controller
     {
         return view('profile.create', [
             'user' => $request->user(),
+            'plans' => Plan::get(),
         ]);
     }
 

@@ -22,6 +22,12 @@
                         Planes
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('profile.create')" :active="request()->routeIs('profile.create')">
+                        Usuarios
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
