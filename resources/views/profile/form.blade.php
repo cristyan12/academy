@@ -47,17 +47,16 @@
             <div class="col-span-6 sm:col-span-4">
                 <x-label for="plan_id">Plan de estudio</x-label>
 
-                <select name="plan_id" id="plan_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-300 focus:border-indigo-300 sm:text-sm">
-                    <option>-</option>
-                    @foreach($plans as $plan)
-                        <option value="{{ $plan->id }}"
-                            {{ old('plan_id', $user->profile->plan_id) === $plan->id ? ' selected' : '' }}
-                        >{{ $plan->title }}</option>
-                    @endforeach
-                </select>
+                <x-owns.select name="plan_id" field="title" :options="$plans" :relatedData="$user->profile->plan_id"/>
             </div>
         </div>
     </div>
+
+{{-- @foreach($plans as $plan)
+<option value="{{ $plan->id }}"{{ old('plan_id', $user->profile->plan_id) === $plan->id ? ' selected' : '' }}>
+{{ $plan->title }}
+</option>
+@endforeach --}}
 
     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
         <x-button>Guardar</x-button>

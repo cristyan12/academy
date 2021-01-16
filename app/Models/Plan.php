@@ -13,6 +13,10 @@ class Plan extends Model
 
     protected $guarded = [];
 
+    protected $cast = [
+        'type' => 'string'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
