@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Plan;
 
 use App\Models\Plan;
 use Illuminate\View\View;
@@ -35,7 +35,7 @@ class PlansTable extends Component
             ->orderBy($this->orderBy, $this->column)
             ->paginate($this->perPage);
 
-        return view('livewire.plans-table', compact('plans'));
+        return view('livewire.plan.plans-table', compact('plans'));
     }
 
     public function paginationView(): string

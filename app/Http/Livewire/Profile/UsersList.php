@@ -11,15 +11,15 @@ class UsersList extends Component
     use WithPagination;
 
     public string $search = '';
-    public string $orderBy = 'updated_at';
-    public string $column = 'desc';
+    public string $orderBy = 'id';
+    public string $column = 'asc';
     public int $perPage = 5;
 
     /** @var array string[] */
     protected $queryString = [
         'search' => ['except' => ''],
-        'orderBy' => ['except' => 'updated_at'],
-        'column' => ['except' => 'desc'],
+        'orderBy' => ['except' => 'id'],
+        'column' => ['except' => 'asc'],
         'perPage' => ['except' => 5],
     ];
 

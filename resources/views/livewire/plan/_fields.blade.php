@@ -25,13 +25,7 @@
             <div class="col-span-6 ">
                 <x-label for="description">Descripción</x-label>
 
-                <textarea
-                    id="description"
-                    name="description"
-                    rows="3"
-                    class="shadow-sm focus:ring-indigo-300 focus:border-indigo-300 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
-                    wire:model.defer="plan.description"
-                ></textarea>
+                <x-owns.textarea name="description" wire:model.defer="plan.description" />
 
                 <p class="mt-2 text-sm text-gray-500">
                     Breve descripción acerca del plan

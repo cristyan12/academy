@@ -19,10 +19,7 @@
                             </div>
                         </div>
                         <div class="mt-5 md:mt-0 md:col-span-2">
-                            <!-- Validation Errors -->
-                            {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
-
-                            <livewire:plan-form></livewire:plan-form>
+                            <livewire:plan.plan-form />
                         </div>
                     </div>
                 </div>

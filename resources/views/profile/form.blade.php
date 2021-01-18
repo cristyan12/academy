@@ -26,7 +26,11 @@
             <div class="col-span-6 sm:col-span-3">
                 <x-label for="born_at">Fecha de nacimiento</x-label>
 
-                <x-input id="born_at" type="date" name="born_at" :value="old('born_at', $user->profile->born_at->format('Y-m-d'))" required />
+                <x-input id="born_at"
+                    type="date"
+                    name="born_at"
+                    :value="old('born_at', $user->profile->born_at->format('Y-m-d') ?? '')"
+                    required />
             </div>
 
             <!-- Countries -->
@@ -51,12 +55,6 @@
             </div>
         </div>
     </div>
-
-{{-- @foreach($plans as $plan)
-<option value="{{ $plan->id }}"{{ old('plan_id', $user->profile->plan_id) === $plan->id ? ' selected' : '' }}>
-{{ $plan->title }}
-</option>
-@endforeach --}}
 
     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
         <x-button>Guardar</x-button>

@@ -4,6 +4,6 @@
     <form wire:submit.prevent="save">
         @csrf
 
-        @include('livewire._fields')
+        @include('livewire.plan._fields')
     </form>
 </div>

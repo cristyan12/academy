@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Plan;
 
 use App\Models\Plan;
 use Illuminate\View\View;
@@ -23,7 +23,7 @@ class PlanForm extends Component
 
     public function render(): View
     {
-        return view('livewire.plan-form');
+        return view('livewire.plan.plan-form');
     }
 
     public function save(): Redirector

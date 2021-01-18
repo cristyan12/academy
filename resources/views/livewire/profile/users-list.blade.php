@@ -1,7 +1,13 @@
 <div>
     <div class="w-full flex pb-10">
         <div class="w-3/6 mx-1">
-            <x-input wire:model.debounce.300ms="search" class="appearance-none" id="search" type="text" name="search" placeholder="Search by ID, title, description and type" />
+            <x-input wire:model.debounce.300ms="search"
+                class="appearance-none"
+                id="search"
+                type="text"
+                name="search"
+                placeholder="Search by ID, title, description and type"
+            />
         </div>
         <div class="w-1/6 relative mx-1">
             <x-select wire:model.debounce.300ms="orderBy">

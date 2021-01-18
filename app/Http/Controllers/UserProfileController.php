@@ -20,7 +20,7 @@ class UserProfileController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $profile = new UserProfile($request->validate([
-            'phone' => 'required|string|max:16',
+            'phone' => 'required|string|max:30',
             'born_at' => 'required|date',
             'country' => 'required|string|max:100',
             'plan_id' => 'required|int|exists:plans,id',
@@ -28,6 +28,6 @@ class UserProfileController extends Controller
 
         auth()->user()->profile()->save($profile);
 
-        return redirect()->back();
+        return redirect(route('profile.index'));
     }
 }
