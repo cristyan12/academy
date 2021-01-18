@@ -12,10 +12,11 @@ class ListUsersTest extends TestCase
 
     public function test_the_list_of_users_screeen_can_be_rendered()
     {
-        $this->actingAs(User::factory()->create());
+        $this->actingAs($user = User::factory()->create());
 
         $response = $this->get('/users')
             ->assertStatus(200)
-            ->assertViewIs('profile.index');
+            ->assertViewIs('profile.index')
+            ->assertSee($user->name);
     }
 }
