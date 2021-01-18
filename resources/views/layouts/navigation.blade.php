@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('profile.create')" :active="request()->routeIs('profile.create')">
+                    <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
                         Usuarios
                     </x-nav-link>
                 </div>

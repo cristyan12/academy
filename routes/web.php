@@ -16,6 +16,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/user/profile/create/', [UserProfileController::class, 'create'])->name('profile.create');
     Route::post('/user/profile/', [UserProfileController::class, 'store'])->name('profile.store');
+    Route::view('users', 'profile.index')->name('profile.index');
 });
 
 require __DIR__.'/auth.php';

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\{HasMany, HasOne};
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,5 +51,13 @@ class User extends Authenticatable
     public function login(): HasMany
     {
         return $this->hasMany(Login::class);
+    }
+
+    public static function search(string $search): Builder
+    {
+        return empty($search) ? static::query()
+            : static::query()->where('id', 'LIKE', "%{$search}%")
+                ->orWhere('name', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%");
     }
 }

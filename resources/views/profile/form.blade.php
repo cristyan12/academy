@@ -26,7 +26,7 @@
             <div class="col-span-6 sm:col-span-3">
                 <x-label for="born_at">Fecha de nacimiento</x-label>
 
-                <x-input id="born_at" type="date" name="born_at" :value="old('born_at', $user->profile->born_at)" required />
+                <x-input id="born_at" type="date" name="born_at" :value="old('born_at', $user->profile->born_at->format('Y-m-d'))" required />
             </div>
 
             <!-- Countries -->

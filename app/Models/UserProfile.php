@@ -19,8 +19,18 @@ class UserProfile extends Model
         'user_id',
     ];
 
+    /** @var array */
+    protected $casts = [
+        'born_at' => 'date'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function plan(): BelongsTo
+    {
+        return $this->belongsTo(Plan::class)->withDefault();
     }
 }

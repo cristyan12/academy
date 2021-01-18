@@ -15,11 +15,11 @@ class CreateUserProfilesTable extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('phone', 16);
+            $table->string('phone', 30);
             $table->date('born_at');
             $table->string('country', 100);
-            $table->foreignId('user_id')->constrained()->onDelete('CASCADE');
-            $table->foreignId('plan_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->smallInteger('plan_id');
             $table->timestamps();
         });
     }

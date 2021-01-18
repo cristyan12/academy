@@ -1,0 +1,115 @@
+<div>
+    <div class="w-full flex pb-10">
+        <div class="w-3/6 mx-1">
+            <x-input wire:model.debounce.300ms="search" class="appearance-none" id="search" type="text" name="search" placeholder="Search by ID, title, description and type" />
+        </div>
+        <div class="w-1/6 relative mx-1">
+            <x-select wire:model.debounce.300ms="orderBy">
+                <option value="id">ID</option>
+                <option value="name">Name</option>
+                <option value="email">Email</option>
+                <option value="updated_at">Last Update</option>
+            </x-select>
+        </div>
+        <div class="w-1/4 relative mx-1">
+            <x-select wire:model.debounce.300ms="column">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </x-select>
+        </div>
+        <div class="w-1/6 relative mx-1">
+            <x-select wire:model="perPage">
+                <option>5</option>
+                <option>10</option>
+                <option>25</option>
+                <option>50</option>
+                <option>100</option>
+            </x-select>
+        </div>
+        <div class="pt-2 relative mx-1">
+            <x-button wire:click="resetFilters">x</x-button>
+        </div>
+    </div>
+    @if($users->isNotEmpty())
+    <div class="flex flex-col">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="align-middle inline-block min-w-full pb-2 sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+
+                    <!-- Table -->
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Nombre
+                                </th>
+                                <th scope="col" class="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Plan
+                                </th>
+                                <th scope="col" class="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Edad
+                                </th>
+                                <th scope="col" class="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Modificado
+                                </th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Edit</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach($users as $user)
+                            <tr>
+                                <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">
+                                        {{ $user->name }}
+                                    </div>
+                                    <div class="text-sm text-gray-500">
+                                        {{ $user->email }}
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ Str::limit($user->profile->plan->title, 40) }}</div>
+                                    <div class="text-sm text-gray-500">{{ Str::limit($user->profile->country, 40) }}</div>
+                                </td>
+                                <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $user->profile->born_at->age ?? '' }} años</div>
+                                </td>
+                                <td class="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $user->updated_at->diffForHumans() }}</div>
+                                </td>
+
+                                <!-- Botones -->
+                                <td width="10px" class="px-6 py-2 border-b border-gray-200 whitespace-nowrap text-right text-sm font-medium">
+                                    <div class="flex px-4 py-1 text-right sm:px-6">
+                                        <div class="flex-auto flex space-x-3">
+                                            <a href="#" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:border-indigo-300">
+                                                <svg class="-ml-1 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+                                                </svg>
+                                            </a>
+                                            <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:border-indigo-300">
+                                                <svg class="-ml-1 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+                    {{ $users->links() }}
+                </div>
+            </div>
+        </div>
+    </div>
+    @else
+    <p class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8 text-xl">
+        No hay usuarios registrados aún.
+    </p>
+    @endif
+</div>

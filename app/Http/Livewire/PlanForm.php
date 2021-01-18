@@ -4,8 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Plan;
 use Illuminate\View\View;
-use Livewire\Component;
-use Livewire\Redirector;
+use Livewire\{Component, Redirector};
 
 class PlanForm extends Component
 {
@@ -33,6 +32,6 @@ class PlanForm extends Component
 
         $this->plan->save();
 
-        return redirect()->to(route('plans.index'));
+        return redirect(route('plans.index'));
     }
 }
