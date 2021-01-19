@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\UserProfile;
+use App\Models\{Plan, User, UserProfile};
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,15 +14,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(PlanSeeder::class);
+
         $user = User::factory()->create([
             'name' => 'Cristyan Valera',
             'email' => 'correo@example.com',
         ]);
 
-        User::factory()->times(100)->create()->each(
+        $user->profile()->save(UserProfile::factory()->make([
+            'phone' => '+58 (412) 052 9549',
+            'born_at' => '1981-12-21',
+            'country' => 'Venezuela',
+            'plan_id' => Plan::where('type', 'adultos')->first()->id,
+        ]));
+
+        User::factory()->times(20)->create()->each(
             fn (User $user) => $user->profile()->save(UserProfile::factory()->make())
         );
 
-        $this->call(PlanSeeder::class);
     }
 }
