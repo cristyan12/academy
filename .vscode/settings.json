@@ -1,4 +1,4 @@
 {
     "explorer.sortOrder": "type",
-    "workbench.sideBar.location": "right"
+    "workbench.sideBar.location": "left"
 }
