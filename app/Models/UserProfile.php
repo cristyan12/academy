@@ -33,4 +33,9 @@ class UserProfile extends Model
     {
         return $this->belongsTo(Plan::class)->withDefault();
     }
+
+    public function getDateOfBornAttribute(): bool
+    {
+        return old('born_at', $this->born_at->format('Y-m-d') ?? '');
+    }
 }

@@ -29,7 +29,7 @@
                 <x-input id="born_at"
                     type="date"
                     name="born_at"
-                    :value="old('born_at', $user->profile->born_at->format('Y-m-d') ?? '')"
+                    :value="$user->profile->day_of_born"
                     required />
             </div>
 

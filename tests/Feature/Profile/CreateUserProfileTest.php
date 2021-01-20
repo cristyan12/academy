@@ -12,6 +12,8 @@ class CreateUserProfileTest extends TestCase
 
     public function test_the_creation_profile_screen_can_be_rendered(): void
     {
+        $this->withoutExceptionHandling();
+
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)->get('/user/profile/create/');
